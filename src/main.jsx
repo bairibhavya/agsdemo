@@ -62,7 +62,11 @@ function GuidedDateTimes({start,end,onStart,onEnd}){
 }
 function Chat({label='Chat on WhatsApp',message='Hello, I would like to enquire about scooter and Bikes rentals.',outline=false}){return <a className={outline?'btn btn-outline':'btn btn-green'} href={waLink(message)} target="_blank" rel="noreferrer"><MessageCircle size={18}/>{label}</a>}
 function Header(){const[open,setOpen]=useState(false);const links=[['/','Home'],['/bikes','Find Bikes'],['/about','About Us'],['/terms','Rental Terms'],['/ourlocation','Our Location'],['/contact','Contact'],['/admin','Owner Login']];return <header className="site-header"><div className="nav-wrap container"><Link className="brand" to="/" onClick={()=>setOpen(false)}><span className="brand-icon"><img className="ags-brandmark" src="/images/ags-digital-logo.svg" alt="AGS"/></span><span><strong>{business.name}</strong><small>{business.subtitle}</small></span></Link><nav className={open?'nav-links open':'nav-links'}>{links.map(([to,label])=><NavLink onClick={()=>setOpen(false)} key={to} end={to==='/'} to={to} className={({isActive})=>isActive?'active':''}>{label}</NavLink>)}<span className="mobile-only"><Chat label="WhatsApp Enquiry"/></span></nav><div className="nav-action"><Chat/><button aria-label="Toggle navigation" className="menu-button" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button></div></div></header>}
-function Footer(){return <footer className="footer"><div className="container footer-grid"><div><div className="footer-brand"><Bike/>{business.name}</div><p>Self-drive scooters and bikes across Nellore and Ongole. Operated by Fectsy Private Limited.</p><Chat label="Enquire on WhatsApp"/></div><div><h4>Explore</h4><Link to="/bikes">Find Bikes</Link><Link to="/about">About Us</Link><Link to="/ourlocation">Our Location</Link></div><div><h4>Helpful links</h4><Link to="/terms">Rental Terms</Link><Link to="/contact">Contact</Link><Link to="/booking">Book a Bike</Link></div><div><h4>Location</h4><p><MapPin size={17}/>{business.location}</p><p>Same-day and 24-hour self-ride packages</p></div></div><div className="footer-bottom container"><span>© {new Date().getFullYear()} {business.name}. All rights reserved.</span><span>Ride with confidence.</span></div></footer>}
+function Footer(){return <footer className="footer"><div className="container footer-grid"><div><div className="footer-brand"><Bike/>{business.name}</div><p>Self-drive scooters and bikes across Nellore and Ongole. Operated by Fectsy Private Limited.
+  <br/><h3>Phone/Call: +91 9110715599</h3>
+  </p><Chat label="Enquire on WhatsApp"/></div>
+
+<div><h4>Explore</h4><Link to="/bikes">Find Bikes</Link><Link to="/about">About Us</Link><Link to="/ourlocation">Our Location</Link></div><div><h4>Helpful links</h4><Link to="/terms">Rental Terms</Link><Link to="/contact">Contact</Link><Link to="/booking">Book a Bike</Link></div><div><h4>Location</h4><p><MapPin size={17}/>{business.location}</p><p>Same-day and 24-hour self-ride packages</p></div></div><div className="footer-bottom container"><span>© {new Date().getFullYear()} {business.name}. All rights reserved.</span><span>Ride with confidence.</span></div></footer>}
 function Title({eyebrow,title,subtitle,light=false}){return <div className={light?'section-title light':'section-title'}>{eyebrow&&<div className="eyebrow">{eyebrow}</div>}<h2>{title}</h2>{subtitle&&<p>{subtitle}</p>}</div>}
 function PriceGrid({car}) {
   return <div className="pricing-grid">
@@ -379,7 +383,17 @@ function Reviews() {
     </section>
   </>;
 }
-function Contact(){return <><PageHero tag="GET IN TOUCH" title="We're here to help" copy="Have a question about a bike, package or upcoming journey? Reach us directly."/><section className="section container contact-grid"><div className="contact-card glass"><div className="feature-icon"><MessageCircle/></div><h2>WhatsApp support</h2><p>Get assistance with bike selection, packages, availability and rental conditions.</p><Chat label="Message on WhatsApp"/></div><div className="contact-card glass"><div className="feature-icon"><MapPin/></div><h2>Our business location</h2><p>{business.location}</p><Link className="btn btn-outline" to="/ourlocation">View Business Location <ArrowRight size={17}/></Link><div className="location-surface"><MapPin size={42}/><span>Business location</span></div></div></section></>}
+function Contact(){return <><PageHero tag="GET IN TOUCH" title="We're here to help" copy="Have a question about a bike, package or upcoming journey? Reach us directly."/><section className="section container contact-grid"><div className="contact-card glass"><div className="feature-icon"><MessageCircle/></div><h2>WhatsApp support</h2><p>
+  Get assistance with bike selection, packages
+  , availability and rental conditions.
+  
+  <br/> Phone/Call: +91 9110715599
+  </p>
+  
+  <Chat label="Message on WhatsApp"/>
+  </div><div className="contact-card glass"><div className="feature-icon"><MapPin/>
+
+</div><h2>Our business location</h2><p>{business.location}</p><Link className="btn btn-outline" to="/ourlocation">View Business Location <ArrowRight size={17}/></Link><div className="location-surface"><MapPin size={42}/><span>Business location</span></div></div></section></>}
 function NotFound(){return <div className="section container missing"><h1>Page not found</h1><p>We couldn't find that page.</p><Link to="/" className="btn btn-primary">Back to Home</Link></div>}
 function Pages() {
   return (
